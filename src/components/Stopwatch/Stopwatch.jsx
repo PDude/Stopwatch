@@ -76,15 +76,11 @@ function Stopwatch() {
           {new Date(seconds).toISOString().slice(11, 19)}
         </p>
         <div className={style.stopwatch_btns}>
-          {stopwatchState === 'stop' ? (
+          {stopwatchState === 'stop' || stopwatchState === 'wait' ? (
             <button onClick={startStopwatch}>Start</button>
-          ) : stopwatchState === 'start' ? (
+          ) : stopwatchState === 'start' || stopwatchState === 'reset' ? (
             <button onClick={stopStopwatch}>Stop</button>
-          ) : stopwatchState === 'reset' ? (
-            <button onClick={stopStopwatch}>Stop</button>
-          ) : (
-            <button onClick={startStopwatch}>Start</button>
-          )}
+          ) : null}
           <button
             onClick={waitStopwatch} // 300 ms
             title={'Use doubleclick to activate'}>
